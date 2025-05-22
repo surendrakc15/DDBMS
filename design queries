@@ -1,4 +1,4 @@
-
+--https://www.programiz.com/sql/online-compiler
 -- Check if the database exists, drop it if it does
 IF EXISTS (SELECT name FROM sys.databases WHERE name = 'DDBMS')
 BEGIN
