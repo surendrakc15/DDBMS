@@ -1,0 +1,87 @@
+
+-- Check if the database exists, drop it if it does
+IF EXISTS (SELECT name FROM sys.databases WHERE name = 'DDBMS')
+BEGIN
+    DROP DATABASE DDBMS;
+END
+-- Create the database
+CREATE DATABASE DDBMS;
+GO
+-- Switch to the new database
+USE DDBMS;
+GO
+-- Create tables
+CREATE TABLE Department (
+    Dept_ID INT PRIMARY KEY,
+    Dept_Name VARCHAR(100) NOT NULL
+);
+CREATE TABLE Manager (
+    Manager_ID INT PRIMARY KEY,
+    Manager_Name VARCHAR(100) NOT NULL
+);
+CREATE TABLE Project (
+    Project_ID VARCHAR(10) PRIMARY KEY,
+    Project_Name VARCHAR(100) NOT NULL
+);
+CREATE TABLE Employee (
+    Emp_ID INT PRIMARY KEY,
+    Emp_Name VARCHAR(100) NOT NULL,
+    Dept_ID INT NOT NULL,
+    Manager_ID INT NOT NULL,
+    Salary DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (Dept_ID) REFERENCES Department(Dept_ID),
+    FOREIGN KEY (Manager_ID) REFERENCES Manager(Manager_ID)
+);
+CREATE TABLE Employee_Project (
+    Emp_ID INT NOT NULL,
+    Project_ID VARCHAR(10) NOT NULL,
+    PRIMARY KEY (Emp_ID, Project_ID),
+    FOREIGN KEY (Emp_ID) REFERENCES Employee(Emp_ID),
+    FOREIGN KEY (Project_ID) REFERENCES Project(Project_ID)
+);
+-- Insert data
+INSERT INTO Department (Dept_ID, Dept_Name) VALUES
+(1, 'HR'),
+(2, 'IT'),
+(3, 'Finance'),
+(4, 'Marketing');
+INSERT INTO Manager (Manager_ID, Manager_Name) VALUES
+(201, 'Alice'),
+(202, 'Bob'),
+(203, 'Charlie'),
+(204, 'Daisy');
+INSERT INTO Project (Project_ID, Project_Name) VALUES
+('P01', 'Recruit'),
+('P02', 'Payroll'),
+('P03', 'Infrastructure'),
+('P04', 'Audit'),
+('P05', 'Budgeting'),
+('P06', 'Campaign'),
+('P07', 'Analytics'),
+('P08', 'Cloud Migration');
+INSERT INTO Employee (Emp_ID, Emp_Name, Dept_ID, Manager_ID, Salary) VALUES
+(101, 'John', 1, 201, 50000),
+(102, 'Sarah', 1, 201, 52000),
+(103, 'Mike', 2, 202, 60000),
+(104, 'Linda', 3, 203, 58000),
+(105, 'Tom', 2, 202, 61000),
+(106, 'Steve', 4, 204, 53000),
+(107, 'Emma', 3, 203, 59000),
+(108, 'Rachel', 4, 204, 54000),
+(109, 'Kevin', 2, 202, 62000),
+(110, 'David', 1, 201, 51000);
+INSERT INTO Employee_Project (Emp_ID, Project_ID) VALUES
+(101, 'P01'),
+(101, 'P02'),
+(102, 'P01'),
+(103, 'P03'),
+(104, 'P04'),
+(104, 'P05'),
+(105, 'P03'),
+(106, 'P06'),
+(107, 'P04'),
+(108, 'P06'),
+(108, 'P07'),
+(109, 'P08'),
+(110, 'P02');
+GO
