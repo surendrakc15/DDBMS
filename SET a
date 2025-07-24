@@ -1,0 +1,38 @@
+Define distributed database. Explain the key characteristics of a Distributed Database Management System (DDBMS). How do these characteristics differentiate it from a centralized DBMS?
+How do autonomy and heterogeneity impact the design and operation of a multi-database distributed system? Illustrate your answer with real-world scenarios where these factors must be carefully addressed.	
+Consider a Student table with the following attributes: (StudentID, Name, Age, Department, City). Explain the concepts of horizontal and vertical fragmentation using this table. Provide one example of each type of fragmentation and describe how they can improve performance in a distributed database environment.
+What are the key differences between centralized and distributed integrity control mechanisms? How do these differences impact update operations performed through views in a distributed environment?	8
+Describe the main steps involved in distributed query processing. How does query decomposition facilitate efficient execution of a complex SQL query across multiple distributed sites?
+Discuss the importance of join ordering in optimizing queries involving horizontally or vertically fragmented relations. Provide an example to illustrate how different join orders can impact query performance in a distributed environment.	8
+
+Given the following schemas:
+a)	Employee(EmpID, EmpName, DeptID, Salary)
+b)	Department(DeptID, DeptName)
+c)	Project(ProjectID, ProjectName, DeptID)
+d)	WorksOn(EmpID, ProjectID, Hours)
+e)	Write SQL queries for the following:
+
+f)	List employee names along with their department names.
+g)	Find projects managed by the 'Finance' department.
+h)	Retrieve employee names who work more than 20 hours on any project.
+i)	Find employee names who work on projects in the 'HR' department.
+Relational Algebra Questions:
+j)	Retrieve the names of all employees who work on at least one project.
+k)	Find the details of departments whose DeptName is 'Finance'.
+l)	List the ProjectIDs and ProjectNames of projects managed by the department with DeptName = 'HR'.
+m)	Find the EmpIDs and Hours of employees who work more than 20 hours on any project.
+a)	Describe how timestamp-based concurrency control manages conflicting operations in a distributed database. Suppose transaction T1 has timestamp 10 and transaction T2 has timestamp 15. If T2 tries to read a data item that T1 has written but not yet committed, explain how the system handles this scenario and what action is taken according to the timestamp ordering protocol.
+b)	Discuss key reliability measures used in distributed DBMS. Describe how distributed reliability protocols ensure fault tolerance and system availability, giving an example of a two-phase commit protocol handling a node failure.".	
+
+Discuss the challenges involved in parallel execution of database queries, such as data skew and synchronization overhead. How do parallel DBMS techniques like data partitioning and pipelining help address these issues?
+Describe a heuristic-based distributed query optimization algorithm. Using an example query spanning multiple relations stored at different sites, demonstrate how the algorithm optimizes the query execution
+
+Write Short notes on (any two)
+Views in distributed database
+Transaction management
+Concurrency management	
+	
+
+
+
+**Best Wishes**
